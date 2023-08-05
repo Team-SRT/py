@@ -38,6 +38,7 @@ def classify_image_endpoint():
         return jsonify({'error': 'No file part in the request'})
 
     file = request.form['file']
+    print(file)
     if file == '':
         print('error2')
         return jsonify({'error': 'No file selected'})
