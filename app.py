@@ -33,17 +33,19 @@ def classify_image(image_path):
 
 @app.route('/classify_image', methods=['POST'])
 def classify_image_endpoint():
-    if 'file' not in request.files:
-        print('request error')
-        return jsonify({'error': 'No file part in the request'})
+    # if 'file' not in request.files:
+    #     print('request error')
+    #     return jsonify({'error': 'No file part in the request'})
 
-    file = request.files['file']
+    file = request
+    console.log(file)
+
     if file.filename == '':
         print('file error')
         return jsonify({'error': 'No file selected'})
 
     # Save the image temporarily
-    image_path = "/tmp/" + file.filename
+    image_path = "/tmp/" + file
     file.save(image_path)
 
     category_index = classify_image(image_path)
