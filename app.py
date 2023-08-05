@@ -33,27 +33,20 @@ def classify_image(image_path):
 
 @app.route('/classify_image', methods=['POST'])
 def classify_image_endpoint():
-    # if 'file' not in request.files:
-    #     print('request error')
+    # if 'file' not in request.form:
+    #     print('error')
     #     return jsonify({'error': 'No file part in the request'})
 
-    file = request
-    print(file)
-
-    if file.filename == '':
-        print('file error')
+    file = request.form['file']
+    if file == '':
+        print('error2')
         return jsonify({'error': 'No file selected'})
-
-    # Save the image temporarily
     image_path = "/tmp/" + file
-    file.save(image_path)
+    file.save(image_path)#save add
 
     category_index = classify_image(image_path)
-
-    # Delete the temporary image file
     os.remove(image_path)
 
-    # Convert category_index to a regular integer before serializing to JSON
     category_index = int(category_index)
 
     print('success')
