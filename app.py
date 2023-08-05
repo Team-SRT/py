@@ -33,9 +33,9 @@ def classify_image(image_path):
 
 @app.route('/classify_image', methods=['POST'])
 def classify_image_endpoint():
-    # if 'file' not in request.form:
-    #     print('error')
-    #     return jsonify({'error': 'No file part in the request'})
+    if not request.form['file'] == '':
+        print('error')
+        return jsonify({'error': 'No file part in the request'})
 
     file = request.form['file']
     if file == '':
