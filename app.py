@@ -38,7 +38,7 @@ def classify_image_endpoint():
     #     return jsonify({'error': 'No file part in the request'})
 
     file = request
-    console.log(file)
+    print(file)
 
     if file.filename == '':
         print('file error')
